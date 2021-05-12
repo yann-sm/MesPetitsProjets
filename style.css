@@ -1,0 +1,375 @@
+
+body {
+    background-color: #ffffee;
+}
+/* VOIRE LES DIFFERENTS PROJET */
+.clickProjet, .crossClose {
+    font-weight: bold;
+    cursor: pointer;
+}
+.clickProjet:hover {
+    color: darkblue;
+    text-decoration: underline blue;
+
+}
+.crossClose:hover {
+    color: red;
+    text-decoration: underline red;
+} 
+.textAlignProjet {
+    padding-top: 30px;
+    text-align: center;
+    box-shadow: 0px 1px 2px black;
+    padding-bottom: 30px;
+    border-radius: 10px;
+}
+/* GESTIONNAIRE ENTREES/SORTIES */
+#projet1 {
+    visibility: hidden;
+    background-color: lightgrey;
+    font-weight: bold;
+    font-style: italic;
+    height: 0px;
+    overflow: hidden;
+    transition: .5s;
+
+}
+
+fieldset {
+    border-radius: 5px;
+    background-color: lightblue;
+}
+
+section {
+    width: auto; height: 100px;
+    border: 1px solid black;
+    border-radius: 5px;
+    background-color: lightblue;
+    margin-top: 2em;
+}
+
+#newPerson { 
+    overflow: auto;
+}
+
+span {
+    margin-left: 20px;
+}
+
+#s2{
+    width: auto; height: 50px;
+    border: 1px solid black;
+    border-radius: 5px;
+    background-color: lightblue;
+}
+
+button{
+    border: 1px solid black;
+    background-color: white;
+    border-radius: 3px;
+    font-weight: bold;
+    box-shadow: 1px 1px 1px black;
+}
+#selectNom{
+    font-weight: bold;
+    background-color: white;
+    border: 1px solid black;
+    border-radius: 3px;
+    box-shadow: 1px 1px 1px black;
+}
+#b3{
+    margin-left: 20px;
+    margin-top: 15px;
+}
+
+#ajoutPerso{
+    visibility: hidden;
+    width: auto; height: 30px;
+    border:1px solid black;
+    border-radius: 5px;
+    background-color: white;
+    padding: 40px;
+    padding-top: 20px;
+    margin-top: -160px;
+}
+
+/* MORPION */
+#projet2 {
+    background-color: #353535;
+    height: 0px;
+    margin-top: 40px;
+    visibility: hidden;
+}
+header {
+    color: white;
+    text-align: center;
+    font-size: 25px;
+    text-shadow: 9px 4px 6px black;
+}
+
+.main {
+    margin-top: 20px;
+}
+
+table {
+    margin-left: auto; margin-right: auto;/*pour garder l'objet au centre*/
+    border: 0px solid black;
+    border-radius: 10px;
+}
+tr {
+    border: 1px solid black;
+    border-radius: 10px;    
+    background-color: white;
+}
+.case {
+    border: 1px solid black;
+    width: 100px; height: 100px;
+    text-align: center;
+    font-size: 50px;
+    box-shadow: 1px 1px 1px 3px darkblue;
+    cursor: pointer;
+    border-radius: 10px;
+}
+.choix {
+    opacity: 0.1;
+}
+
+.victoire {
+    position: fixed;
+    letter-spacing: 2px;
+    left: 0px;
+    top: 100px;
+    text-align: center;
+    color: red;
+    background-color: ;
+    text-shadow: 9px 4px 6px black;
+    font-size: 50px;
+    width: 100%;
+}
+
+#count p{
+    font-weight: bold;
+    font-size: 20px;
+    text-align: center;
+    padding: 5px;
+    color: white;
+    text-shadow: 9px 4px 6px black;
+}
+
+#rejouer {
+    position: fixed;
+    left: 0px;
+    top: 300px;
+    text-align: center;
+    width: 100%;
+}
+#button {
+    font-size: 40px;
+    font-weight: bold;
+    font-family: italic;
+    cursor: pointer;
+    padding: 10px;
+    margin-bottom: 200px;
+    border-radius: 10px;
+    background-color: gray;
+    color: white;
+    text-shadow: 9px 4px 6px black;
+    box-shadow: 2px 1px 1px 2px black;
+}
+
+
+/* CHOIX DE COULEURS */
+
+#projet3 { 
+    visibility: hidden;
+    /*background-image: -webkit-linear-gradient(left, white, skyblue,pink, skyblue, white);*/
+    background-color: white;
+    font-family: Verdana, Arial, Halvetica; 
+    font-style: italic;
+    height: 0px;
+}
+
+table { 
+    margin-left: auto; margin-right: auto;/*pour garder l'objet au centre*/
+    border: 0; 
+}
+.tableColor {
+    margin-top: -100px;
+    margin-bottom: 50px;
+}
+
+.titleChoiceColor {
+    margin-top: 100px;
+    margin-left: 20px;
+    text-decoration: underline;
+}
+
+
+/* CALCULATRICE */
+#projet4 {
+    background-color: darkblue/*#1115*/;
+    height: 0px;
+    user-select: none;
+    visibility: hidden;
+}
+#projet4 h2 {
+    color: white;
+    margin-left: 20px;
+}
+
+#container1 {
+    display: block;
+    position: relative;
+    background-color: #fff;
+    width: 285px; height: auto;
+    top: 0; left: 0;
+    margin: auto;
+    margin-top: 15px;
+    border-radius: 10px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 3px 5px rgba(0,0,0,0.3);
+    padding: 5px;
+}
+
+#output {
+    display: block;
+    position: relative;
+    background-image: -webkit-linear-gradient(right,red,blue);
+    width: 80%; height: 80px;
+    margin: 5%;
+    border-radius: 10px;
+    text-align: right;
+    user-select: auto;
+    box-shadow: 0 1px 3px black;
+    margin: 28px;
+}
+
+#output1 {
+    color: gray; font-size: 17px;
+    margin-top: 20px;
+}
+
+#output2 {
+    color: white; font-size: 28px;
+    overflow: auto;
+}
+
+#keypad {
+    display: block;
+    position: relative;
+    width: 90%; height: 65%;
+    border-radius: 10px;
+    margin: 15px;
+}
+
+.button {
+    display: inline-block;
+    position: relative;
+    height: 50px; width: 50px;
+    border-radius: 50%;
+    margin: 5px;
+    border: none; outline: none;
+    transition: .15s;
+    font-size: 15px;
+    box-shadow: 0 1px 3px black;
+}
+
+.button:active {
+    transform: scale(0.8);
+}
+
+#equal {
+    display: inline-block;
+    position: absolute;
+    height: 112px; width: 50px;
+    border-radius: 30px;
+    margin: 7px auto 5px 12px;
+    border: none; outline: none;
+    transition: .15s;
+    background-color: tomato; 
+    color: white;
+    z-index: 2;
+}
+
+#equal:active { 
+    transition: scale(0.8);
+}
+
+#operators,#back {
+    background-color: #03346C;
+    color: white;
+    font-size: 18px;
+    padding-top: 3px;
+}
+
+#back {
+    padding-top: 5px;
+    padding-right: 7px;
+}
+
+#numbers {
+    background-image: -webkit-linear-gradient(left,blue, green);
+    color: black;
+}
+
+#Snumber {
+    background-color: white;
+    color: black;
+    border: solid 2px red;
+    box-shadow: 0 1px 3px darkred;
+}
+
+/* SUPER LOTO */
+#projet5 {
+    background-color: black;
+    text-align: center;
+    height: 0px;
+    visibility: hidden;
+}
+
+
+h3{
+    text-decoration: underline ;
+    color: white;
+    text-shadow:  1px 1px 6px pink;
+}
+#block {
+    margin-left:0%;
+    margin-top: 5%;
+    
+}
+.sp{
+    display: block-inline;
+    width: 15px; height:15px;
+    margin-left: 10px;
+    border:1px solid black;
+    border-radius:40%;
+    padding:5px;
+    background-color: red;
+    box-shadow:1px 1px 6px black;
+    color: white;
+}
+
+#n6, #n7{
+    background-color: yellow;
+    margin-left: 20px;
+    color: darkblue;
+}
+
+button{
+    margin-top: 30px;
+    margin-left: 0%;
+    box-shadow: 1px 1px 6px black;
+    margin-bottom: 10px;
+}
+
+#containerNt{
+    
+}
+
+#newTirage{
+    display: flex;
+    height: ;
+    margin-left:34%;
+}
+
+
