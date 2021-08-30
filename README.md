@@ -1,5 +1,5 @@
 # MesPetitsProjets
-Version déployer via github page : https://yann-sm.github.io/MesPetitsProjets/
+Version déployer via github pages : https://yann-sm.github.io/MesPetitsProjets/
 
 Ici on va etrouver 5 petit projet que j'ai ralisé.
 A savoir : 
