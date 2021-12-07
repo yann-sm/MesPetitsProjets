@@ -99,6 +99,7 @@ button{
     height: 0px;
     margin-top: 40px;
     visibility: hidden;
+    transition: .5s;
 }
 header {
     color: white;
@@ -187,6 +188,7 @@ tr {
     font-family: Verdana, Arial, Halvetica; 
     font-style: italic;
     height: 0px;
+    transition: .5s;
 }
 
 table { 
@@ -211,6 +213,7 @@ table {
     height: 0px;
     user-select: none;
     visibility: hidden;
+    transition: .5s;
 }
 #projet4 h2 {
     color: white;
@@ -324,6 +327,7 @@ table {
     text-align: center;
     height: 0px;
     visibility: hidden;
+    transition: .5s;
 }
 
 
