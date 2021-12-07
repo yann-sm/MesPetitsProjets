@@ -10,7 +10,7 @@ function closeP1(){
 }
 
 function viewP2(){
-	document.getElementById("projet2").style.height = "auto",
+	document.getElementById("projet2").style.height = "600px",
 	document.getElementById("projet2").style.visibility = "visible";
 }
 function closeP2(){
@@ -19,7 +19,7 @@ function closeP2(){
 }
 
 function viewP3(){
-	document.getElementById("projet3").style.height = "auto",
+	document.getElementById("projet3").style.height = "330px",
 	document.getElementById("projet3").style.visibility = "visible";
 }
 function closeP3(){
@@ -28,7 +28,7 @@ function closeP3(){
 }
 
 function viewP4(){
-	document.getElementById("projet4").style.height = "auto",
+	document.getElementById("projet4").style.height = "580px",
 	document.getElementById("projet4").style.visibility = "visible";
 }
 function closeP4(){
@@ -37,7 +37,7 @@ function closeP4(){
 }
 
 function viewP5(){
-	document.getElementById("projet5").style.height = "auto",
+	document.getElementById("projet5").style.height = "200px",
 	document.getElementById("projet5").style.visibility = "visible";
 }
 function closeP5(){

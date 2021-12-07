@@ -1,6 +1,7 @@
 
 body {
-    background-color: #ffffee;
+    /*background-color: #ffffee;*/
+    background: linear-gradient( 0.25turn, #3f87a6, #ebf8e1, #f69d3c);
 }
 /* VOIRE LES DIFFERENTS PROJET */
 .clickProjet, .crossClose {
@@ -9,12 +10,14 @@ body {
 }
 .clickProjet:hover {
     color: darkblue;
-    text-decoration: underline blue;
+    letter-spacing: 2px;
+    transition: .5s;
 
 }
 .crossClose:hover {
     color: red;
-    text-decoration: underline red;
+    letter-spacing: 2px;
+    transition: .5s;
 } 
 .textAlignProjet {
     padding-top: 30px;
@@ -26,25 +29,26 @@ body {
 /* GESTIONNAIRE ENTREES/SORTIES */
 #projet1 {
     visibility: hidden;
-    background-color: lightgrey;
+    /*background-color: lightgrey;*/
+    background: linear-gradient( 0.25turn, #3f87c6, #ebf8e1, #f67d3b);
     font-weight: bold;
     font-style: italic;
     height: 0px;
     overflow: hidden;
     transition: .5s;
-
 }
 
 fieldset {
     border-radius: 5px;
-    background-color: lightblue;
+    background-color: #70f5ff;
+    margin-left: -1px; margin-right: -1px;
 }
 
 section {
     width: auto; height: 100px;
     border: 1px solid black;
     border-radius: 5px;
-    background-color: lightblue;
+    background-color: #70f5ff;
     margin-top: 2em;
 }
 
@@ -60,7 +64,7 @@ span {
     width: auto; height: 50px;
     border: 1px solid black;
     border-radius: 5px;
-    background-color: lightblue;
+    background-color: #70f5ff;
 }
 
 button{
@@ -99,6 +103,7 @@ button{
     height: 0px;
     margin-top: 40px;
     visibility: hidden;
+    overflow: hidden;
     transition: .5s;
 }
 header {
@@ -188,6 +193,7 @@ tr {
     font-family: Verdana, Arial, Halvetica; 
     font-style: italic;
     height: 0px;
+    overflow: hidden;
     transition: .5s;
 }
 
@@ -209,10 +215,11 @@ table {
 
 /* CALCULATRICE */
 #projet4 {
-    background-color: darkblue/*#1115*/;
+    background: linear-gradient( 0.25turn, #3f87a6, #ebf8e1, #f69d3c);
     height: 0px;
     user-select: none;
     visibility: hidden;
+    overflow: hidden;
     transition: .5s;
 }
 #projet4 h2 {
@@ -323,18 +330,19 @@ table {
 
 /* SUPER LOTO */
 #projet5 {
-    background-color: black;
+    /*background-color: black;*/
+     background: linear-gradient( 0.25turn, #3f87a6, #ebf8e1, #f69d3c);
     text-align: center;
     height: 0px;
     visibility: hidden;
+    overflow: hidden;
     transition: .5s;
 }
 
 
 h3{
-    text-decoration: underline ;
-    color: white;
-    text-shadow:  1px 1px 6px pink;
+    color: black;
+    /*text-shadow:  1px 1px 6px pink;*/
 }
 #block {
     margin-left:0%;
