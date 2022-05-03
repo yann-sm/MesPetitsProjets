@@ -1,122 +1,161 @@
-
 body {
-    /*background-color: #ffffee;*/
-    background: linear-gradient( 0.25turn, #3f87a6, #ebf8e1, #f69d3c);
-}
-/* VOIRE LES DIFFERENTS PROJET */
-.clickProjet, .crossClose {
-    font-weight: bold;
-    cursor: pointer;
-}
-.clickProjet:hover {
-    color: darkblue;
-    letter-spacing: 2px;
-    transition: .5s;
-
-}
-.crossClose:hover {
-    color: red;
-    letter-spacing: 2px;
-    transition: .5s;
-} 
-.textAlignProjet {
-    padding-top: 30px;
-    text-align: center;
-    box-shadow: 0px 1px 2px black;
-    padding-bottom: 30px;
-    border-radius: 10px;
-}
-/* GESTIONNAIRE ENTREES/SORTIES */
-#projet1 {
-    visibility: hidden;
-    /*background-color: lightgrey;*/
-    background: linear-gradient( 0.25turn, #3f87c6, #ebf8e1, #f67d3b);
-    font-weight: bold;
-    font-style: italic;
-    height: 0px;
-    overflow: hidden;
-    transition: .5s;
+	background-color: #2a2a2a;
 }
 
 fieldset {
+    margin-top: -20px;
     border-radius: 5px;
+    border: transparent;
     background-color: #70f5ff;
     margin-left: -1px; margin-right: -1px;
-}
-
-section {
-    width: auto; height: 100px;
-    border: 1px solid black;
-    border-radius: 5px;
-    background-color: #70f5ff;
-    margin-top: 2em;
+    padding-bottom: 20px;
 }
 
 #newPerson { 
-    overflow: auto;
-}
-
-span {
-    margin-left: 20px;
-}
-
-#s2{
-    width: auto; height: 50px;
-    border: 1px solid black;
-    border-radius: 5px;
-    background-color: #70f5ff;
+    height: 120px;
+    overflow: scroll;
 }
 
 button{
-    border: 1px solid black;
+    border: transparent;
     background-color: white;
     border-radius: 3px;
     font-weight: bold;
-    box-shadow: 1px 1px 1px black;
+    /*box-shadow: 1px 1px 1px black;*/
 }
-#selectNom{
+#ajoutName {
+    position: absolute;
+    margin-top: 55px;
+    left: 75px;
+    margin-right: -200px;
+}
+#selectNom {
     font-weight: bold;
     background-color: white;
-    border: 1px solid black;
+    border: 1px solid transparent;
     border-radius: 3px;
-    box-shadow: 1px 1px 1px black;
+   /* box-shadow: 1px 1px 1px black;*/
 }
-#b3{
-    margin-left: 20px;
-    margin-top: 15px;
-}
-
-#ajoutPerso{
+#ajoutPerso {
     visibility: hidden;
-    width: auto; height: 30px;
-    border:1px solid black;
+    position: absolute;
+    z-index: 1;
+    width: auto; height: 20px;
+    border: 1px solid black;
     border-radius: 5px;
     background-color: white;
-    padding: 40px;
+    padding: 20px;
     padding-top: 20px;
     margin-top: -160px;
+    margin-left: -10px;
+    margin-right: 8px;
 }
 
-/* MORPION */
-#projet2 {
-    background-color: #353535;
-    height: 0px;
-    margin-top: 40px;
-    visibility: hidden;
-    overflow: hidden;
-    transition: .5s;
+/* SECTION 3 - CARD */
+#s3 {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	overflow-y: scroll;
 }
-header {
-    color: white;
-    text-align: center;
-    font-size: 25px;
-    text-shadow: 9px 4px 6px black;
+.containerCard {
+	padding: 30px 0;
+	text-align: center;
+	display: flex;
+	justify-content: center;
+	align-items: center; 
+	margin-top: 100px;
+}
+.s3-card {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin-left: 100px;
+	margin-right: 100px;
+	flex-wrap: wrap;
 }
 
+.card {
+	width: 250px;
+	height: 300px;
+	position: relative;
+	transform-style: preserve-3d;
+	cursor: pointer;
+	margin-top: 0;
+}
+.card .face {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	transform-style: preserve-3d;
+	transform: perspective(500px) rotateY(0);
+	backface-visibility: hidden;
+	transition: all 0.5s ease-in-out;
+}
+.card .face.front {
+	transform: perspective(500px) rotateY(0);
+}
+.card .face.front::before {
+	content: '';
+	position: absolute;
+	width: 90%;
+	height: 90%;
+	background: transparent;
+	border: 2px solid #fefae0;
+	border-radius: 6px;
+}
+.card .face.front::after {
+	content: '';
+	position: absolute;
+	width: 80%;
+	height: 80%;
+	background: transparent;
+	border-top: 5px solid #fefae0;
+	border-bottom: 5px solid #fefae0;/**/
+}
+.card .face.front h3 {
+	font-size: 20px;
+	font-weight: 700;
+	text-transform: uppercase;
+	padding-bottom: 5px;
+	color: #fefae0;
+}
+.card .face.front img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+}
+.card .face.back {
+    margin-left: -10px;
+	text-align: center;
+	background: #fefae0;
+	transform: perspective(500px) rotateY(180deg);
+	border-radius: 6px;
+	padding: 10px;
+}
+.card .face.back span {
+	font-size: 13px;
+	font-weight: 500;
+	text-transform: capitalize;
+	padding-bottom: 20px;
+}
+.card:hover .face.front {
+	transform: perspective(500px) rotateY(180deg);
+}
+.card:hover .face.back {
+	transform: perspective(500px) rotateY(360deg);
+}
+
+/* PROJET 2 - MORPION */
 .main {
     margin-top: 20px;
 }
-
 table {
     margin-left: auto; margin-right: auto;/*pour garder l'objet au centre*/
     border: 0px solid black;
@@ -128,10 +167,11 @@ tr {
     background-color: white;
 }
 .case {
+    background-color: white;
     border: 1px solid black;
-    width: 100px; height: 100px;
+    width: 50px; height: 50px;
     text-align: center;
-    font-size: 50px;
+    font-size: 20px;
     box-shadow: 1px 1px 1px 3px darkblue;
     cursor: pointer;
     border-radius: 10px;
@@ -139,7 +179,6 @@ tr {
 .choix {
     opacity: 0.1;
 }
-
 .victoire {
     position: fixed;
     letter-spacing: 2px;
@@ -147,30 +186,28 @@ tr {
     top: 100px;
     text-align: center;
     color: red;
-    background-color: ;
     text-shadow: 9px 4px 6px black;
-    font-size: 50px;
+    font-size: 25px;
+    font-weight: bold;
     width: 100%;
 }
-
 #count p{
     font-weight: bold;
     font-size: 20px;
     text-align: center;
-    padding: 5px;
-    color: white;
-    text-shadow: 9px 4px 6px black;
+    padding: 0px;
+    color: #2a2a2a;
+    /*text-shadow: 9px 4px 6px black;*/
 }
-
 #rejouer {
     position: fixed;
     left: 0px;
-    top: 300px;
+    top: 200px;
     text-align: center;
     width: 100%;
 }
 #button {
-    font-size: 40px;
+    font-size: 20px;
     font-weight: bold;
     font-family: italic;
     cursor: pointer;
@@ -183,86 +220,61 @@ tr {
     box-shadow: 2px 1px 1px 2px black;
 }
 
-
-/* CHOIX DE COULEURS */
-
+/* PROJET3 - CHOIX DE COULEURS */
 #projet3 { 
-    visibility: hidden;
     /*background-image: -webkit-linear-gradient(left, white, skyblue,pink, skyblue, white);*/
-    background-color: white;
     font-family: Verdana, Arial, Halvetica; 
-    font-style: italic;
-    height: 0px;
-    overflow: hidden;
-    transition: .5s;
 }
-
 table { 
     margin-left: auto; margin-right: auto;/*pour garder l'objet au centre*/
     border: 0; 
 }
+td {
+	background-color: #fefae0;
+}
 .tableColor {
     margin-top: -100px;
-    margin-bottom: 50px;
+    margin-bottom: 10px;
 }
-
 .titleChoiceColor {
+	text-decoration: none;
     margin-top: 100px;
     margin-left: 20px;
-    text-decoration: underline;
 }
-
 
 /* CALCULATRICE */
-#projet4 {
-    background: linear-gradient( 0.25turn, #3f87a6, #ebf8e1, #f69d3c);
-    height: 0px;
-    user-select: none;
-    visibility: hidden;
-    overflow: hidden;
-    transition: .5s;
-}
-#projet4 h2 {
-    color: white;
-    margin-left: 20px;
-}
-
 #container1 {
     display: block;
-    position: relative;
+    position: absolute;
     background-color: #fff;
-    width: 285px; height: auto;
+    width: 250px; height: auto;
     top: 0; left: 0;
-    margin: auto;
-    margin-top: 15px;
+    margin-left: 5px;
     border-radius: 10px;
     box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 3px 5px rgba(0,0,0,0.3);
     padding: 5px;
 }
-
 #output {
     display: block;
     position: relative;
     background-image: -webkit-linear-gradient(right,red,blue);
-    width: 80%; height: 80px;
-    margin: 5%;
+    width: 80%; height: 50px;
     border-radius: 10px;
     text-align: right;
     user-select: auto;
     box-shadow: 0 1px 3px black;
-    margin: 28px;
+    margin: 10px 20px 10px 20px;
+    padding-right: 5px;
 }
-
 #output1 {
-    color: gray; font-size: 17px;
+    color: yellow; 
+    font-size: 17px;
     margin-top: 20px;
 }
-
 #output2 {
     color: white; font-size: 28px;
     overflow: auto;
 }
-
 #keypad {
     display: block;
     position: relative;
@@ -270,11 +282,10 @@ table {
     border-radius: 10px;
     margin: 15px;
 }
-
 .button {
     display: inline-block;
     position: relative;
-    height: 50px; width: 50px;
+    height: 30px; width: 30px;
     border-radius: 50%;
     margin: 5px;
     border: none; outline: none;
@@ -282,45 +293,35 @@ table {
     font-size: 15px;
     box-shadow: 0 1px 3px black;
 }
-
 .button:active {
-    transform: scale(0.8);
+    transform: scale(1.8);
 }
-
 #equal {
     display: inline-block;
-    position: absolute;
-    height: 112px; width: 50px;
-    border-radius: 30px;
-    margin: 7px auto 5px 12px;
+    height: 30px; width: 30px;
+    border-radius: 50%;
     border: none; outline: none;
     transition: .15s;
     background-color: tomato; 
     color: white;
-    z-index: 2;
 }
-
 #equal:active { 
-    transition: scale(0.8);
+    transition: scale(1.8);
 }
-
 #operators,#back {
     background-color: #03346C;
     color: white;
     font-size: 18px;
     padding-top: 3px;
 }
-
 #back {
     padding-top: 5px;
     padding-right: 7px;
 }
-
 #numbers {
     background-image: -webkit-linear-gradient(left,blue, green);
-    color: black;
+    color: white;
 }
-
 #Snumber {
     background-color: white;
     color: black;
@@ -329,59 +330,88 @@ table {
 }
 
 /* SUPER LOTO */
-#projet5 {
-    /*background-color: black;*/
-     background: linear-gradient( 0.25turn, #3f87a6, #ebf8e1, #f69d3c);
-    text-align: center;
-    height: 0px;
-    visibility: hidden;
-    overflow: hidden;
-    transition: .5s;
-}
-
-
-h3{
-    color: black;
-    /*text-shadow:  1px 1px 6px pink;*/
-}
 #block {
     margin-left:0%;
-    margin-top: 5%;
-    
+    margin-top: 5%;   
 }
-.sp{
-    display: block-inline;
-    width: 15px; height:15px;
-    margin-left: 10px;
-    border:1px solid black;
-    border-radius:40%;
-    padding:5px;
+.sp {
+    display: inline-block;
+    position: relative;
+    height: 5px; 
+    width: 30px;
+    border-radius: 50%;
+    padding-top: 5px;
+    margin: 5px;
     background-color: red;
-    box-shadow:1px 1px 6px black;
+    transition: .15s;
+    text-align: center;
+    text-align: center;
     color: white;
+    margin-top: 10px;
+    box-shadow: 1px 1px 6px black;
 }
-
-#n6, #n7{
+.block-jocker {
+    padding: 0px;
+}
+#n1, #n2, #n3, #n4, #n5 {
+    font-size: 20px;
+    font-weight: bold;
+}
+#n6, #n7 {
     background-color: yellow;
     margin-left: 20px;
     color: darkblue;
+    font-size: 20px;
+    font-weight: bold;
 }
-
-button{
+.play-loto {
+    background-color: white;
+    font-size: 30px;
+    padding: 5px 20px 5px 20px;
+    border-radius: 10px;
+}
+button {
     margin-top: 30px;
     margin-left: 0%;
-    box-shadow: 1px 1px 6px black;
     margin-bottom: 10px;
+    transition: .5s;
+}
+button:hover {
+    box-shadow: 1px 1px 6px black;
+    transition: .5s;
 }
 
-#containerNt{
-    
+/* BLOCKBREACKER */
+canvas {
+    position: absolute;
+    background-color: #fefae0;
+    display: block;
+    margin: 0 auto;
+    border-radius: 5px;
 }
+#myCanvas {
+    margin-top: 0px;
+    box-shadow: 2px 2px 6px;
 
-#newTirage{
-    display: flex;
-    height: ;
-    margin-left:34%;
+}
+.play-block {
+    position: absolute;
+    font-size: 40px;
+    padding: 5px 20px 5px 20px;
+    border-radius: 10px;
+    cursor: pointer;
+    background-color: transparent;
+}
+.play-block-hidden {
+    animation: fadeIn 1 ease-in 2s;  
+}
+@keyframes fadeIn {
+    0% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
 }
 
 

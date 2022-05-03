@@ -1,50 +1,4 @@
 
-/* VOIRE LES PROJETS */
-function viewP1(){
-	document.getElementById("projet1").style.height = "430px",
-	document.getElementById("projet1").style.visibility = "visible";
-}
-function closeP1(){
-	document.getElementById("projet1").style.height = "0px",
-	document.getElementById("projet1").style.visibility = "hidden";
-}
-
-function viewP2(){
-	document.getElementById("projet2").style.height = "600px",
-	document.getElementById("projet2").style.visibility = "visible";
-}
-function closeP2(){
-	document.getElementById("projet2").style.height = "0px",
-	document.getElementById("projet2").style.visibility = "hidden";
-}
-
-function viewP3(){
-	document.getElementById("projet3").style.height = "330px",
-	document.getElementById("projet3").style.visibility = "visible";
-}
-function closeP3(){
-	document.getElementById("projet3").style.height = "0px",
-	document.getElementById("projet3").style.visibility = "hidden";
-}
-
-function viewP4(){
-	document.getElementById("projet4").style.height = "580px",
-	document.getElementById("projet4").style.visibility = "visible";
-}
-function closeP4(){
-	document.getElementById("projet4").style.height = "0px",
-	document.getElementById("projet4").style.visibility = "hidden";
-}
-
-function viewP5(){
-	document.getElementById("projet5").style.height = "200px",
-	document.getElementById("projet5").style.visibility = "visible";
-}
-function closeP5(){
-	document.getElementById("projet5").style.height = "0px",
-	document.getElementById("projet5").style.visibility = "hidden";
-}
-
 /* GESTIONNAIRE ENTREE/SORTIE */
 function printTime(){
     var d = new Date();
@@ -59,24 +13,19 @@ function printTime(){
     if(month <= 9){
         month = "0" + month;
     }
-      
     if(day <= 9){
         day  = "0" + day;
     }
-    
     if(secs <= 9){
         secs = "0" + secs;
     }
-    
     if(min <= 9){
         min = "0" + min;
     }
-    
     if(hours <= 9){
         hours = "0" + hours;
     }   
-    
-
+   
    /* document.body.innerHTML = month +" - "+day+" - "+year+"//"+"<br>"+hours+":"+min+":"+secs;
    */
    document.getElementById("date").innerHTML =  day +" - "+month+" - "+year;
@@ -100,15 +49,12 @@ function entrer(){
     if(month <= 9){
         month = "0" + month;
     }
-      
     if(day <= 9){
         day  = "0" + day;
     }
-    
     if(secs <= 9){
         secs = "0" + secs;
     }
-    
     if(min <= 9){
         min = "0" + min;
     }
@@ -370,7 +316,7 @@ function eq(){
 
 	document.getElementById("output1").innerHTML = value;
 
-	//try  catch erreur :
+	//try catch erreur :
 	try{
 		value = String(eval(value));
 	}
@@ -389,7 +335,7 @@ function nbRandom(){
     return Math.floor(Math.random() * (100 - 1)) + 1;
 }
 
-function empty(){
+function remove(){
     document.getElementById("n1").innerHTML="";
 	document.getElementById("n2").innerHTML="";
 	document.getElementById("n3").innerHTML="";
@@ -401,7 +347,7 @@ function empty(){
 
 function start(){    
 
-    empty();
+    remove();
 	document.getElementById("n1").innerHTML = nbRandom();
 	document.getElementById("n2").innerHTML = nbRandom();
 	document.getElementById("n3").innerHTML = nbRandom();
@@ -429,14 +375,226 @@ function jocker(){
  	    n3 === n5 ||n4 === n5){
  		start();
  	} 
- 	else if(n6 === N7){
+ 	else if(n6 === N7){""
  		jocker();
  	}
  }
 
+ // BlockBreacker
+/*  VARIABLES  */
+			//on definit nottre canvas pour le rendu graphique
+			let canvas = document.getElementById('myCanvas');
+			let ctx = canvas.getContext("2d");
+			//variable contenant le rayon de la ball :
+			let ballRadius = 6;
+			//on definit la position de départ avec 2 variables x et y :
+			let x = canvas.width/2;
+			let y = canvas.height-30;
+			// on definit 2 variables pour le deplacement :
+			let dx = 3;
+			let dy = -3; 
+			//definition de la barre pour frapper la balle :
+			let paddleHeight = 5; // hauteur 
+			let paddleWidth = 55; // largeur
+			let paddleX = (canvas.width-paddleWidth/2); // position dans le canvas
+			//controle deplacement barre :
+			let rightPressed = false;
+			let leftPressed = false;
+			// configuration des variables des briques :
+			let brickRowCount = 6; // nombre de rangéees
+			let brickColumnCount = 8; // nombre de colonne
+			let brickWidth = 18; // largeur
+			let brickHeight = 8; // hauteur
+			let brickPadding = 6; // espace entre les briques
+			let brickOffsetTop = 30; // decalage en haut du canvas
+			let brickOffsetLeft = 30; // decalage à gauche du canvas
+			//variable score :
+			let score = 0;
+			//variable de vie :
+			let lives = 3;
+
+		
+			//tableau pour dessiner les briques :
+			let bricks = [];
+			for(let c = 0; c < brickColumnCount; c++){
+				bricks[c] = []; 
+				for(let r = 0; r < brickRowCount; r++){
+					bricks[c][r] = {x: 0, y: 0, status: 1};
+				}
+			}
 
 
+/* BLOCK BREAKER */
+document.addEventListener("keydown", keyDownHandler, false);
+document.addEventListener("keyup", keyUpHandler, false);
+// key contient les information des touche enfoncé - et e represente la variable-
+function keyDownHandler(e){
+	if(e.key == "right" || e.key == "ArrowRight"){
+		rightPressed = true;
+	}
+	else if(e.key == "left" || e.key == "ArrowLeft"){
+		leftPressed = true;
+	}
+}
 
+function keyUpHandler(e){
+	if(e.key == "right" || e.key == "ArrowRight"){
+		rightPressed = false;
+	}
+	else if(e.key == "left" || e.key == "ArrowLeft"){
+		leftPressed = false;
+	}
+}
 
+//fonction de detection de colision :
+function collisionDetection(){
+	for(let c = 0; c < brickColumnCount; c++){
+		for(let r = 0; r < brickRowCount; r++){
+			let b = bricks[c][r];
+			if(b.status == 1){
+				if(x > b.x && x < b.x + brickWidth && y > b.y && y < b.y + brickHeight){
+					dy = -dy;
+					b.status = 0;
+					//pour incrémenter le score a chaque colision avec une brique :
+					score++;
+					if (score == brickRowCount*brickColumnCount) {
+						alert("YOU WIN, CONGRATULATION !!!");
+						document.location.reload();
+						//clearInterval(interval);
+					}
+				}
+			}
+		}
+	}
+}
 
+//function pour calculer le score :
+function drawScore(){
+	ctx.font = "16px Arial";
+	ctx.fillStyle = "#0095DD";
+	ctx.fillText("score: "+score, 8, 20);
+}
 
+// fonction pour dessiner le compteur de vie :
+function drawLives(){
+	ctx.font = "16px Arial";
+	ctx.fillStyle = "#0095DD";
+	ctx.fillText("Lives :"+lives, canvas.width-65, 20);
+}
+
+//on dessine la ball
+function drawBall(){
+	ctx.beginPath();
+	ctx.arc(x, y, ballRadius, 0, Math.PI*2);
+	ctx.fillStyle = "#0095DD";
+	ctx.shadowBlur = 0;
+	ctx.fill();
+	ctx.closePath();
+}
+
+function drawPaddle(){
+	ctx.beginPath();
+	ctx.rect(paddleX, canvas.height-paddleHeight, paddleWidth, paddleHeight);
+	ctx.fillStyle = "red";
+	ctx.fill();
+	ctx.closePath();
+}
+
+function drawBricks(){
+	for(let c = 0; c < brickColumnCount; c++){
+		for(let r = 0; r < brickRowCount; r++){
+			if(bricks[c][r].status == 1){
+				//pour calculer la position de chaque brique a chaque iteration de la boucle:
+				let brickX = (c*(brickWidth+brickPadding))+brickOffsetLeft;
+				let brickY = (r*(brickHeight+brickPadding))+brickOffsetTop;
+				bricks[c][r].x = brickX;
+				bricks[c][r].y = brickY;
+				// dessiner les briques :
+				ctx.beginPath();
+				ctx.rect(brickX, brickY, brickWidth, brickHeight);
+				ctx.radius = "5";
+				ctx.fillStyle = getRandomColor();
+				ctx.shadowColor = "black";
+				ctx.shadowBlur = 5;
+				ctx.fill();
+				ctx.closePath();
+			}
+		}
+	}
+}
+
+//generateur de couleur aléatoire :
+function getRandomColor() {
+	let letters = '0123456789ABCDEF';  
+	let color = '#';
+	for (let i = 0; i < 6; i++) {
+		color += letters[Math.floor(Math.random() * 16)];
+	}
+	return color;
+}
+
+//on dessine le mouvement de la ball
+function draw(){
+	ctx.clearRect(0, 0, canvas.width, canvas.height);//pour supprimer l'ancienne position(ou dessin)
+	drawBricks();
+	drawBall();
+	drawPaddle();
+	drawScore();
+	drawLives();
+	collisionDetection();
+		// rebond gauche et droite :
+		if( x + dx > canvas.width - ballRadius || x + dx < ballRadius){
+			dx = -dx;
+		}
+		// rebond si touche le haut  :
+		if(y + dy < ballRadius){
+			dy = -dy;
+		}
+		// rebondit si touche la barre :
+		else if(y + dy > canvas.height - ballRadius){
+			if(x > paddleX && x < paddleX + paddleWidth){
+				dy = -dy;
+			}
+		//si non, elle touche le bas et c'est game over : 
+		else {
+			lives--;
+			if(!lives){
+				alert('GAME OVER');
+				document.location.reload();
+			}
+			else {
+				x = canvas.width/2;
+				y = canvas.height-30;
+				dx = 3;
+				dy = -3;
+				paddleX = (canvas.width-paddleWidth)/2;
+			}
+		}
+	}
+
+	if(rightPressed){
+		paddleX += 7;
+		if(paddleX + paddleWidth > canvas.width){
+			paddleX = canvas.width - paddleWidth;
+		}
+	}
+	else if(leftPressed){
+		paddleX -= 7;
+		if(paddleX < 0){
+			paddleX = 0;
+		}
+	}
+	x += dx;
+	y += dy;
+	//remplace set interval pour un meilleur rendu : 
+	requestAnimationFrame(draw);
+}
+// ici on appelle la fonction draw toute les 10 miliseconde :
+//let interval = setInterval(draw, 1000);
+function startBlockBreacker() {
+	draw();
+	document.getElementById('playBlock').classList.add('play-block-hidden');
+	document.getElementById('playBlock').classList.remove('play-block');
+}
+
+	

@@ -1,235 +1,247 @@
 <!DOCTYPE html>
 <html>
-    <head>
-    	<meta charset="utf-8">
-    	<link rel="stylesheet" type="text/css" href="style.css">
+<head>
+	<style type="text/css">
 
-    	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
-    	<script src="script.js"></script>
-        <title>Gestionnaire d'entrée</title>
-    </head>
+	</style>
+	<meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="style.css">
 
-    <body onload="player();">
-
-    	<header>
-    		<h1>Mes petits Projets</h1>
-    	</header>
-
-    	<div class="textAlignProjet">
-    		<span class="clickProjet" onclick="viewP1()">Projet 1 - Géstionnaire entrées/sorties</span>
-	    	<span class="crossClose" onclick="closeP1()">X Fermer</span>
-    	</div>
-	   
-
-	    <section id="projet1">
-		    <h2>Gestionnaire entrées/sorties</h2>
-		    <fieldset>
-		    
-		    <div>Date : <span id="date"></span></div>
-		    <div>Heure : <span id="time"></span></div>
-		    
-		    <label>Nom :</label>
-		    <select id="selectNom">
-		        <option id="o1" value="Didier">Didier</option>
-		        <option id="o2" value="Bertrand">Bertrand</option>
-		        <option id="03" value="Chris">Chris</option>
-		    </select>
-
-		    <button onclick=entrer()>Entrée</button>
-		    <button onclick=sortie()>Sortie</button>
-		    </fieldset>
-		    
-		    <section id="newPerson"><br />
-		   
-		    </section>
-
-		    <br />
-		    <section id="s2">
-		        <button id="b3" onclick="remiseZero()">Remise à zéro</button>
-		        
-		        <button onclick="ajoutName()">Ajouter personnel</button>
-		    </section>
-
-		    <br />
-		    <div id="ajoutPerso">
-		        <label>Nom : </label>
-		        <input type="text" id="nouveauPerso" value="José" required >
-		        <button onclick="ajouter()">Ajouter</button>
-		    </div>
-	    </section>
-
-	    <div class="textAlignProjet">
-	    	<span class="clickProjet" onclick="viewP2()">Projet 2 - Morpion</span>
-	    	<span class="crossClose" onclick="closeP2()">X Fermer</span>
-	    </div>
-
-	    <section id="projet2">
-	    	<header>
-				<h2>Morpion</h2>
-			</header>
-			
-			<div class="main">
-				<table id="table">
-					<tr>
-						<td class="case" name="case" id="c0" onclick="play('c0');">&nbsp;</td>
-						<td class="case" name="case" id="c1" onclick="play('c1');">&nbsp;&nbsp;</td>
-						<td class="case" name="case" id="c2" onclick="play('c2');">&nbsp;&nbsp;&nbsp;</td>
-					</tr>
-
-					<tr>
-						<td class="case" name="case" id="c3" onclick="play('c3');">&nbsp;&nbsp;&nbsp;&nbsp;</td>
-						<td class="case" name="case" id="c4" onclick="play('c4');">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
-						<td class="case" name="case" id="c5" onclick="play('c5');">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
-					</tr>
-
-					<tr>
-						<td class="case" name="case" id="c6" onclick="play('c6');">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
-						<td class="case" name="case" id="c7" onclick="play('c7');">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
-						<td class="case" name="case" id="c8" onclick="play('c8');">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
-					</tr>
-				</table>
-				
-			</div>
-
-			<div id="count">
-				<p>Nombre de croix : <span id="countX">0</span></p>
-				<p>Nombre de rond : <span id="countO">0</span></p>
-				<p>Nombre de tour : <span id="nbTour">0</span></p>
-			</div>
-
-
-			<div id="rejouer">
-				<button type="button" id="button" onclick="play();">Rejouer</button>
-			</div>
-	    	
-	    </section>
-
-	    <div class="textAlignProjet">
-	   		<span class="clickProjet" onclick="viewP3()">Projet 3 - Sélecteur de couleur</span>
-	    	<span class="crossClose" onclick="closeP3()">X Fermer</span>
-	    </div>
-
-	    <section id="projet3">
-	    	<h2 class="titleChoiceColor">-- </h2>
-	    <table class="tableColor">
-	        <tr>
-	            <td style="color:red; text-decoration: underline;">Red</td>
-	            <td><input type="range" id="rRange" min="0" max="255" value="0" oninput="fColorPicker()"></td>
-	            <td id="rWeight" style="background-color: #ff0000;" width="20%"></td>
-	        </tr>
-
-	        <tr>
-	            <td style="color:green; text-decoration: underline;">Green</td>
-	            <td><input type="range" id="gRange" min="0" max="255" value="0" oninput="fColorPicker()"></td>
-	            <td id="gWeight" style="background-color: #00ff00;" width="20%"></td>
-	        </tr>
-
-	        <tr>
-	            <td style="color:blue; text-decoration: underline;">Blue</td>
-	            <td><input type="range" id="bRange" min="0" max="255" value="0" oninput="fColorPicker()"></td>
-	            <td id="bWeight" style="background-color: #0000ff;" width="20%"></td>
-	        </tr>
-
-	        <tr>
-	            <td height="15px;"></td>
-	        </tr>
-
-	        <tr>
-	            <td style="text-decoration: underline;">Hex valeur  </td>
-	            <td style="text-align: center;"><div id="hexValue">#000000</div></td>
-	            <td width="20%"></td>
-	        </tr>
-
-	        <tr>
-	            <td height="15px;"></td>
-	        </tr>
-
-	        <tr>
-	            <td></td>
-	            <td id="textColor" style="background-color: #000000" height="100px;"></td>
-	            <td></td>
-	        </tr>
-	    </table>
-	    </section>
-
-	    <div class="textAlignProjet">
-	    	<span class="clickProjet" onclick="viewP4()">Projet 4 - Calculatrice</span>
-	    	<span class="crossClose" onclick="closeP4()">X Fermer</span>
-	    </div>
-
-	    <section id="projet4">
-	    	<h2>Calculatrice</h2>
-	    	<div id="container1">
-			<div id="output">
-				<div id="output1"></div>
-				<div id="output2"></div>
-			</div>
-
-			
-			<div id="keypad">
-				<div class="set">
-					<button type="text" id="back" class="button" onclick="back()"><b> <- </b></button>
-					<button type="text" id="operators" class="button" onclick="view('*')"><b> X </b></button>
-					<button type="text" id="operators" class="button" onclick="view('/')"><b> / </b></button>
-					<button type="text" id="operators" class="button" onclick="view('+')"><b> + </b></i></button>
+   	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+   	
+	<title>petits projets</title>
+</head>
+<body onload="player();">
+	<section id="s3">
+		<div class="containerCard">
+			<div class="s3-card">
+				<div class="card">
+					<div class="face front">
+						<h3>Géstionnaire <br>entrées / sorties</h3>
+						<span></span>
+					</div>
+					<div class="face back">
+						 <section id="projet1">
+						    <fieldset>
+							    <div>Date : <span id="date"></span></div>
+							    <div>Heure : <span id="time"></span></div>
+							    
+							    <label>Nom :</label>
+							    <select id="selectNom">
+							        <option id="o1" value="Didier">Didier</option>
+							        <option id="o2" value="Bertrand">Bertrand</option>
+							        <option id="03" value="Chris">Chris</option>
+							    </select>
+							    
+							    <div class="boutonProjet1">
+							    	<button onclick=entrer()>Entrée</button>
+							    	<button onclick=sortie()>Sortie</button>
+							    	<button class="buttonP1" id="b3" onclick="remiseZero()">Remise à zéro</button>
+							  		<button class="buttonP1" id="ajoutName" onclick="ajoutName()">Ajouter personnel</button>
+							    </div>
+						    </fieldset>
+						    
+						    <section id="newPerson"><br />
+						   
+						    </section>
+						    
+						    <div id="ajoutPerso">
+						        <label>Nom : </label>
+						        <input type="text" id="nouveauPerso" value="José" required >
+						        <button onclick="ajouter()">Ajouter</button>
+						    </div>
+					    </section>
+					</div>
 				</div>
-				
-				<div class="set">
-					<button type="number" id="numbers" class="button" onclick="view(7)">7</button>
-					<button type="number" id="numbers" class="button" onclick="view(8)">8</button>	
-					<button type="number" id="numbers" class="button" onclick="view(9)">9</button>
-					<button type="text" id="operators" class="button" onclick="view('-')"><big><b>-</b></big></button>
-				</div>	
 
-				<div class="set">
-					<button type="number" id="numbers" class="button" onclick="view(4)">4</button>
-					<button type="number" id="numbers" class="button" onclick="view(5)">5</button>	
-					<button type="number" id="numbers" class="button" onclick="view(6)">6</button>
-					<button type="text" id="operators" class="button" onclick="view('%')"><b> % </b></button>
-				</div>	
+				<div class="card">
+					<div class="face front">
+						<h3>Morpion</h3>
+						<span></span>
+					</div>
+					<div class="face back">
+						<section id="projet2">
+							<div class="main">
+								<table id="table">
+									<tr>
+										<td class="case" name="case" id="c0" onclick="play('c0');">&nbsp;</td>
+										<td class="case" name="case" id="c1" onclick="play('c1');">&nbsp;&nbsp;</td>
+										<td class="case" name="case" id="c2" onclick="play('c2');">&nbsp;&nbsp;&nbsp;</td>
+									</tr>
 
-				<div class="set">
-					<button type="number" id="numbers" class="button" onclick="view(1)">1</button>
-					<button type="number" id="numbers" class="button" onclick="view(2)">2</button>	
-					<button type="number" id="numbers" class="button" onclick="view(3)">3</button>
-					<button type="text" id="equal" class="button" onclick="eq()"><b> = </b></button>
-				</div>	
+									<tr>
+										<td class="case" name="case" id="c3" onclick="play('c3');">&nbsp;&nbsp;&nbsp;&nbsp;</td>
+										<td class="case" name="case" id="c4" onclick="play('c4');">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+										<td class="case" name="case" id="c5" onclick="play('c5');">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+									</tr>
 
-				<div class="set">
-					<button type="text" id="Snumber" class="button" onclick="view('.')">.</button>
-					<button type="number" id="Snumber" class="button" onclick="clr()">C</button>
+									<tr>
+										<td class="case" name="case" id="c6" onclick="play('c6');">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+										<td class="case" name="case" id="c7" onclick="play('c7');">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+										<td class="case" name="case" id="c8" onclick="play('c8');">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+									</tr>
+								</table>
+								
+							</div>
+
+							<div id="count">
+								<p>Nombre de croix : <span id="countX">0</span></p>
+								<p>Nombre de rond : <span id="countO">0</span></p>
+								<p>Nombre de tour : <span id="nbTour">0</span></p>
+							</div>
+
+
+							<div id="rejouer">
+								<button type="button" id="button" onclick="play();">Rejouer</button>
+							</div>
+					    	
+					    </section>
+					</div>
+				</div>
+
+				<div class="card">
+					<div class="face front">
+						<h3>Sélecteur de couleur</h3>
+						<span></span>
+					</div>
+					<div class="face back">
+						<section id="projet3">
+					    	<h2 class="titleChoiceColor"> </h2>
+					    <table class="tableColor">
+					        <tr>
+					            <td style="color:red;">Red</td>
+					            <td><input type="range" id="rRange" min="0" max="255" value="0" oninput="fColorPicker()"></td>
+					            <td id="rWeight" style="background-color: #ff0000; border-radius: 50%;" width="20%"></td>
+					        </tr>
+
+					        <tr>
+					            <td style="color:green;">Green</td>
+					            <td><input type="range" id="gRange" min="0" max="255" value="0" oninput="fColorPicker()"></td>
+					            <td id="gWeight" style="background-color: #00ff00; border-radius: 50%;" width="20%"></td>
+					        </tr>
+
+					        <tr>
+					            <td style="color:blue;">Blue</td>
+					            <td><input type="range" id="bRange" min="0" max="255" value="0" oninput="fColorPicker()"></td>
+					            <td id="bWeight" style="background-color: #0000ff; border-radius: 50%;" width="20%"></td>
+					        </tr>
+
+					        <tr>
+					            <td height="15px"></td>
+					        </tr>
+
+					        <tr>
+					            <td>Hex valeur  </td>
+					            <td style="text-align: center;"><div id="hexValue">#000000</div></td>
+					            <td width="20%"></td>
+					        </tr>
+
+					        <tr>
+					            <td height="15px;"></td>
+					        </tr>
+
+					        <tr>
+					            <td></td>
+					            <td id="textColor" style="background-color: #000000; border-radius: 6px;" height="100px;"></td>
+					            <td></td>
+					        </tr>
+					    </table>
+					    </section>
+					</div>
+				</div>
+
+				<div class="card">
+					<div class="face front">
+						<h3>Calculatrice</h3>
+						<span></span>
+					</div>
+					<div class="face back">
+						<section id="projet4">
+					    	<h2></h2>
+					    	<div id="container1">
+							<div id="output">
+								<div id="output1"></div>
+								<div id="output2"></div>
+							</div>
+
+							<div id="keypad">
+								<div class="set">
+									<button type="text" id="back" class="button" onclick="back()"><b> < </b></button>
+									<button type="text" id="operators" class="button" onclick="view('*')"><b> X </b></button>
+									<button type="text" id="operators" class="button" onclick="view('/')"><b> / </b></button>
+									<button type="text" id="operators" class="button" onclick="view('+')"><b> + </b></i></button>
+								</div>
+								
+								<div class="set">
+									<button type="number" id="numbers" class="button" onclick="view(7)">7</button>
+									<button type="number" id="numbers" class="button" onclick="view(8)">8</button>	
+									<button type="number" id="numbers" class="button" onclick="view(9)">9</button>
+									<button type="text" id="operators" class="button" onclick="view('-')"><big><b>-</b></big></button>
+								</div>	
+
+								<div class="set">
+									<button type="number" id="numbers" class="button" onclick="view(4)">4</button>
+									<button type="number" id="numbers" class="button" onclick="view(5)">5</button>	
+									<button type="number" id="numbers" class="button" onclick="view(6)">6</button>
+									<button type="text" id="operators" class="button" onclick="view('%')"><b> % </b></button>
+								</div>	
+
+								<div class="set">
+									<button type="number" id="numbers" class="button" onclick="view(1)">1</button>
+									<button type="number" id="numbers" class="button" onclick="view(2)">2</button>	
+									<button type="number" id="numbers" class="button" onclick="view(3)">3</button>
+									<button type="text" id="equal" class="button" onclick="eq()"><b> = </b></button>
+								</div>	
+
+								<div class="set">
+									<button type="text" id="Snumber" class="button" onclick="view('.')">.</button>
+									<button type="number" id="Snumber" class="button" onclick="clr()">C</button>
+								</div>
+							</div>
+						</section>	   
+					</div>
+				</div>
+
+				<div class="card">
+					<div class="face front">
+						<h3>Super LOTO</h3>
+						<span></span>
+					</div>
+					<div class="face back">
+						<section id="projet5">
+					    	<div>
+					    		<h3></h3>
+					    		<div id="block">
+						            <span class="sp" id="n1"></span>
+						            <span class="sp" id="n2"></span>
+						            <span class="sp" id="n3"></span>
+						            <span class="sp" id="n4"></span>
+						            <span class="sp" id="n5"></span> 
+
+						            <div class="block-jocker">
+						            	<span class="sp" id="n6"></span>
+						            	<span class="sp" id="n7"></span>
+						            </div>
+						            
+						        </div>
+						        <button class="play-loto" onclick="start()">Jouer</button>
+					    	</div>    
+					    </section>
+					</div>
+				</div>
+
+				<div class="card">
+					<div class="face front">
+						<h3>Block Breacker</h3>
+					</div>
+					<div class="face back">
+						<canvas id="myCanvas" width="250" height="300"></canvas>
+						<button id="playBlock" class="play-block" onclick="startBlockBreacker()">PLAY</button>
+					</div>
 				</div>
 			</div>
 		</div>
-	    	
-	    </section>
-	    
-	    <div class="textAlignProjet">
-	    	<span class="clickProjet" onclick="viewP5()">Projet 5 - Super LOTO</span>
-	    	<span class="crossClose" onclick="closeP5()">X Fermer</span>
-	    </div>
-
-	    <section id="projet5">
-	    	<div>
-
-	    		<h3>Super LOTO</h3>
-
-	    		<div id="block">
-		            <span class="sp" id="n1">---</span>
-		            <span class="sp" id="n2">---</span>
-		            <span class="sp" id="n3">---</span>
-		            <span class="sp" id="n4">---</span>
-		            <span class="sp" id="n5">---</span> 
-		            <span class="sp" id="n6">---</span>
-		            <span class="sp" id="n7">---</span>
-		        </div>
-	        
-		        <button onclick="start()">Jouer</button>
-		   
-	    	</div>    
-	    	
-	    </section>
-    
-        
-    </body>
+	</section>
+	<script src="script.js"></script>
+</body>
 </html>
