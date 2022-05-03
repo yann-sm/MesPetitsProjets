@@ -10,5 +10,4 @@ A savoir :
    un sélécteur de couleur,
    une calculatrice,
    un générateur de chiffre à la façon d'un loto
-   
-   (Projet pas encore adapté au mobile)
+   un blockBreacker
